@@ -1,0 +1,902 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"23 ./ECU_layer/LED/ecu_led.h
+[; ;./ECU_layer/LED/ecu_led.h: 23: typedef struct{
+[s S277 :4 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S277 . port pin led_st ]
+"10 Trrafic_Light.c
+[; ;Trrafic_Light.c: 10: led_confg_t led_green = {PORTA_INDEX, PIN0, LED_OFF};
+[c E2986 0 1 2 3 4 .. ]
+[n E2986 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E2976 0 1 2 3 4 5 6 7 .. ]
+[n E2976 . PIN0 PIN1 PIN2 PIN3 PIN4 PIN5 PIN6 PIN7  ]
+[c E3114 0 1 .. ]
+[n E3114 . LED_OFF LED_ON  ]
+"61 ./ECU_layer/LED/../../MCAL_layer/GPIO/gpio.h
+[s S273 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S273 . port pin direction logic ]
+"14 Trrafic_Light.c
+[; ;Trrafic_Light.c: 14: segment_confg_t segment_1 =
+[c E3101 0 1 .. ]
+[n E3101 . COMMON_CATHODE COMMON_ANODE  ]
+"27 ./ECU_layer/7-Segment/ecu_7_segment.h
+[; ;./ECU_layer/7-Segment/ecu_7_segment.h: 27: typedef struct {
+[s S276 `S273 -> 4 `i `E3101 1 ]
+[n S276 . segment_pin segment_st ]
+"14 Trrafic_Light.c
+[; ;Trrafic_Light.c: 14: segment_confg_t segment_1 =
+[c E2972 0 1 .. ]
+[n E2972 . OUTPUT INPUT  ]
+[c E2968 0 1 .. ]
+[n E2968 . LOW HIGH  ]
+"43 ./ECU_layer/LCD/ecu_lcd.h
+[; ;./ECU_layer/LCD/ecu_lcd.h: 43: typedef struct{
+[s S275 `S273 1 `S273 -> 4 `i `S273 1 ]
+[n S275 . rs_lcd lcd_pin en_lcd ]
+[p mainexit ]
+"22 ./Trrafic_Light.h
+[; ;./Trrafic_Light.h: 22: void application_initialize(void);
+[v _application_initialize `(v ~T0 @X0 0 ef ]
+"33 ./ECU_layer/LED/ecu_led.h
+[; ;./ECU_layer/LED/ecu_led.h: 33: Std_ReturnType Led_Turn_Off(const led_confg_t *led);
+[v _Led_Turn_Off `(uc ~T0 @X0 0 ef1`*CS277 ]
+"32
+[; ;./ECU_layer/LED/ecu_led.h: 32: Std_ReturnType Led_Turn_On(const led_confg_t *led);
+[v _Led_Turn_On `(uc ~T0 @X0 0 ef1`*CS277 ]
+"55 ./ECU_layer/LCD/ecu_lcd.h
+[; ;./ECU_layer/LCD/ecu_lcd.h: 55: Std_ReturnType send_4_bit_string_data_pos(const lcd_confg_4_t *lcd, uint8 row, uint8 column, uint8 *data);
+[v _send_4_bit_string_data_pos `(uc ~T0 @X0 0 ef4`*CS275`uc`uc`*uc ]
+"34 ./ECU_layer/7-Segment/ecu_7_segment.h
+[; ;./ECU_layer/7-Segment/ecu_7_segment.h: 34: Std_ReturnType segment_write_number(const segment_confg_t *segment, uint8 num);
+[v _segment_write_number `(uc ~T0 @X0 0 ef2`*CS276`uc ]
+"71 ./ECU_layer/LED/../../MCAL_layer/GPIO/gpio.h
+[v _gpio_pin_write_logic `(uc ~T0 @X0 0 ef2`*CS273`E2968 ]
+[v F680 `(v ~T0 @X0 1 tf1`ul ]
+"12 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\builtins.h
+[v __delay `JF680 ~T0 @X0 0 e ]
+[p i __delay ]
+"50 ./ECU_layer/LCD/ecu_lcd.h
+[; ;./ECU_layer/LCD/ecu_lcd.h: 50: Std_ReturnType lcd_pins_4_initialize(const lcd_confg_4_t *lcd);
+[v _lcd_pins_4_initialize `(uc ~T0 @X0 0 ef1`*CS275 ]
+"33 ./ECU_layer/7-Segment/ecu_7_segment.h
+[; ;./ECU_layer/7-Segment/ecu_7_segment.h: 33: Std_ReturnType segment_pin_initialize(const segment_confg_t *segment);
+[v _segment_pin_initialize `(uc ~T0 @X0 0 ef1`*CS276 ]
+"31 ./ECU_layer/LED/ecu_led.h
+[; ;./ECU_layer/LED/ecu_led.h: 31: Std_ReturnType Led_initialize(const led_confg_t *led);
+[v _Led_initialize `(uc ~T0 @X0 0 ef1`*CS277 ]
+"69 ./ECU_layer/LED/../../MCAL_layer/GPIO/gpio.h
+[v _gpio_pin_direction_intialize `(uc ~T0 @X0 0 ef1`*CS273 ]
+"54 C:/Program Files/Microchip/MPLABX/v6.10/packs/Microchip/PIC18Fxxxx_DFP/1.4.151/xc8\pic\include\proc\../proc/pic18f4620.h
+[; <" PORTA equ 0F80h ;# ">
+"191
+[; <" PORTB equ 0F81h ;# ">
+"362
+[; <" PORTC equ 0F82h ;# ">
+"537
+[; <" PORTD equ 0F83h ;# ">
+"679
+[; <" PORTE equ 0F84h ;# ">
+"882
+[; <" LATA equ 0F89h ;# ">
+"994
+[; <" LATB equ 0F8Ah ;# ">
+"1106
+[; <" LATC equ 0F8Bh ;# ">
+"1218
+[; <" LATD equ 0F8Ch ;# ">
+"1330
+[; <" LATE equ 0F8Dh ;# ">
+"1382
+[; <" TRISA equ 0F92h ;# ">
+"1387
+[; <" DDRA equ 0F92h ;# ">
+"1604
+[; <" TRISB equ 0F93h ;# ">
+"1609
+[; <" DDRB equ 0F93h ;# ">
+"1826
+[; <" TRISC equ 0F94h ;# ">
+"1831
+[; <" DDRC equ 0F94h ;# ">
+"2048
+[; <" TRISD equ 0F95h ;# ">
+"2053
+[; <" DDRD equ 0F95h ;# ">
+"2270
+[; <" TRISE equ 0F96h ;# ">
+"2275
+[; <" DDRE equ 0F96h ;# ">
+"2434
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"2499
+[; <" PIE1 equ 0F9Dh ;# ">
+"2576
+[; <" PIR1 equ 0F9Eh ;# ">
+"2653
+[; <" IPR1 equ 0F9Fh ;# ">
+"2730
+[; <" PIE2 equ 0FA0h ;# ">
+"2796
+[; <" PIR2 equ 0FA1h ;# ">
+"2862
+[; <" IPR2 equ 0FA2h ;# ">
+"2928
+[; <" EECON1 equ 0FA6h ;# ">
+"2994
+[; <" EECON2 equ 0FA7h ;# ">
+"3001
+[; <" EEDATA equ 0FA8h ;# ">
+"3008
+[; <" EEADR equ 0FA9h ;# ">
+"3015
+[; <" EEADRH equ 0FAAh ;# ">
+"3022
+[; <" RCSTA equ 0FABh ;# ">
+"3027
+[; <" RCSTA1 equ 0FABh ;# ">
+"3232
+[; <" TXSTA equ 0FACh ;# ">
+"3237
+[; <" TXSTA1 equ 0FACh ;# ">
+"3488
+[; <" TXREG equ 0FADh ;# ">
+"3493
+[; <" TXREG1 equ 0FADh ;# ">
+"3500
+[; <" RCREG equ 0FAEh ;# ">
+"3505
+[; <" RCREG1 equ 0FAEh ;# ">
+"3512
+[; <" SPBRG equ 0FAFh ;# ">
+"3517
+[; <" SPBRG1 equ 0FAFh ;# ">
+"3524
+[; <" SPBRGH equ 0FB0h ;# ">
+"3531
+[; <" T3CON equ 0FB1h ;# ">
+"3643
+[; <" TMR3 equ 0FB2h ;# ">
+"3650
+[; <" TMR3L equ 0FB2h ;# ">
+"3657
+[; <" TMR3H equ 0FB3h ;# ">
+"3664
+[; <" CMCON equ 0FB4h ;# ">
+"3754
+[; <" CVRCON equ 0FB5h ;# ">
+"3833
+[; <" ECCP1AS equ 0FB6h ;# ">
+"3915
+[; <" PWM1CON equ 0FB7h ;# ">
+"3985
+[; <" BAUDCON equ 0FB8h ;# ">
+"3990
+[; <" BAUDCTL equ 0FB8h ;# ">
+"4157
+[; <" CCP2CON equ 0FBAh ;# ">
+"4236
+[; <" CCPR2 equ 0FBBh ;# ">
+"4243
+[; <" CCPR2L equ 0FBBh ;# ">
+"4250
+[; <" CCPR2H equ 0FBCh ;# ">
+"4257
+[; <" CCP1CON equ 0FBDh ;# ">
+"4354
+[; <" CCPR1 equ 0FBEh ;# ">
+"4361
+[; <" CCPR1L equ 0FBEh ;# ">
+"4368
+[; <" CCPR1H equ 0FBFh ;# ">
+"4375
+[; <" ADCON2 equ 0FC0h ;# ">
+"4446
+[; <" ADCON1 equ 0FC1h ;# ">
+"4531
+[; <" ADCON0 equ 0FC2h ;# ">
+"4650
+[; <" ADRES equ 0FC3h ;# ">
+"4657
+[; <" ADRESL equ 0FC3h ;# ">
+"4664
+[; <" ADRESH equ 0FC4h ;# ">
+"4671
+[; <" SSPCON2 equ 0FC5h ;# ">
+"4733
+[; <" SSPCON1 equ 0FC6h ;# ">
+"4803
+[; <" SSPSTAT equ 0FC7h ;# ">
+"5024
+[; <" SSPADD equ 0FC8h ;# ">
+"5031
+[; <" SSPBUF equ 0FC9h ;# ">
+"5038
+[; <" T2CON equ 0FCAh ;# ">
+"5109
+[; <" PR2 equ 0FCBh ;# ">
+"5114
+[; <" MEMCON equ 0FCBh ;# ">
+"5219
+[; <" TMR2 equ 0FCCh ;# ">
+"5226
+[; <" T1CON equ 0FCDh ;# ">
+"5329
+[; <" TMR1 equ 0FCEh ;# ">
+"5336
+[; <" TMR1L equ 0FCEh ;# ">
+"5343
+[; <" TMR1H equ 0FCFh ;# ">
+"5350
+[; <" RCON equ 0FD0h ;# ">
+"5483
+[; <" WDTCON equ 0FD1h ;# ">
+"5511
+[; <" HLVDCON equ 0FD2h ;# ">
+"5516
+[; <" LVDCON equ 0FD2h ;# ">
+"5781
+[; <" OSCCON equ 0FD3h ;# ">
+"5858
+[; <" T0CON equ 0FD5h ;# ">
+"5935
+[; <" TMR0 equ 0FD6h ;# ">
+"5942
+[; <" TMR0L equ 0FD6h ;# ">
+"5949
+[; <" TMR0H equ 0FD7h ;# ">
+"5956
+[; <" STATUS equ 0FD8h ;# ">
+"6027
+[; <" FSR2 equ 0FD9h ;# ">
+"6034
+[; <" FSR2L equ 0FD9h ;# ">
+"6041
+[; <" FSR2H equ 0FDAh ;# ">
+"6048
+[; <" PLUSW2 equ 0FDBh ;# ">
+"6055
+[; <" PREINC2 equ 0FDCh ;# ">
+"6062
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"6069
+[; <" POSTINC2 equ 0FDEh ;# ">
+"6076
+[; <" INDF2 equ 0FDFh ;# ">
+"6083
+[; <" BSR equ 0FE0h ;# ">
+"6090
+[; <" FSR1 equ 0FE1h ;# ">
+"6097
+[; <" FSR1L equ 0FE1h ;# ">
+"6104
+[; <" FSR1H equ 0FE2h ;# ">
+"6111
+[; <" PLUSW1 equ 0FE3h ;# ">
+"6118
+[; <" PREINC1 equ 0FE4h ;# ">
+"6125
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"6132
+[; <" POSTINC1 equ 0FE6h ;# ">
+"6139
+[; <" INDF1 equ 0FE7h ;# ">
+"6146
+[; <" WREG equ 0FE8h ;# ">
+"6158
+[; <" FSR0 equ 0FE9h ;# ">
+"6165
+[; <" FSR0L equ 0FE9h ;# ">
+"6172
+[; <" FSR0H equ 0FEAh ;# ">
+"6179
+[; <" PLUSW0 equ 0FEBh ;# ">
+"6186
+[; <" PREINC0 equ 0FECh ;# ">
+"6193
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"6200
+[; <" POSTINC0 equ 0FEEh ;# ">
+"6207
+[; <" INDF0 equ 0FEFh ;# ">
+"6214
+[; <" INTCON3 equ 0FF0h ;# ">
+"6306
+[; <" INTCON2 equ 0FF1h ;# ">
+"6376
+[; <" INTCON equ 0FF2h ;# ">
+"6493
+[; <" PROD equ 0FF3h ;# ">
+"6500
+[; <" PRODL equ 0FF3h ;# ">
+"6507
+[; <" PRODH equ 0FF4h ;# ">
+"6514
+[; <" TABLAT equ 0FF5h ;# ">
+"6523
+[; <" TBLPTR equ 0FF6h ;# ">
+"6530
+[; <" TBLPTRL equ 0FF6h ;# ">
+"6537
+[; <" TBLPTRH equ 0FF7h ;# ">
+"6544
+[; <" TBLPTRU equ 0FF8h ;# ">
+"6553
+[; <" PCLAT equ 0FF9h ;# ">
+"6560
+[; <" PC equ 0FF9h ;# ">
+"6567
+[; <" PCL equ 0FF9h ;# ">
+"6574
+[; <" PCLATH equ 0FFAh ;# ">
+"6581
+[; <" PCLATU equ 0FFBh ;# ">
+"6588
+[; <" STKPTR equ 0FFCh ;# ">
+"6694
+[; <" TOS equ 0FFDh ;# ">
+"6701
+[; <" TOSL equ 0FFDh ;# ">
+"6708
+[; <" TOSH equ 0FFEh ;# ">
+"6715
+[; <" TOSU equ 0FFFh ;# ">
+"17 ./ECU_layer/LCD/../../MCAL_layer/GPIO/../device_config.h
+[p x OSC  =  HS          ]
+"18
+[p x FCMEN  =  OFF       ]
+"19
+[p x IESO  =  OFF        ]
+"22
+[p x PWRT  =  OFF        ]
+"23
+[p x BOREN  =  OFF       ]
+"24
+[p x BORV  =  1          ]
+"27
+[p x WDT  =  OFF         ]
+"28
+[p x WDTPS  =  32768     ]
+"31
+[p x CCP2MX  =  PORTC    ]
+"32
+[p x PBADEN  =  OFF      ]
+"33
+[p x LPT1OSC  =  OFF     ]
+"34
+[p x MCLRE  =  ON        ]
+"37
+[p x STVREN  =  ON       ]
+"38
+[p x LVP  =  OFF         ]
+"39
+[p x XINST  =  OFF       ]
+"42
+[p x CP0  =  OFF         ]
+"43
+[p x CP1  =  OFF         ]
+"44
+[p x CP2  =  OFF         ]
+"45
+[p x CP3  =  OFF         ]
+"48
+[p x CPB  =  OFF         ]
+"49
+[p x CPD  =  OFF         ]
+"52
+[p x WRT0  =  OFF        ]
+"53
+[p x WRT1  =  OFF        ]
+"54
+[p x WRT2  =  OFF        ]
+"55
+[p x WRT3  =  OFF        ]
+"58
+[p x WRTC  =  OFF        ]
+"59
+[p x WRTB  =  OFF        ]
+"60
+[p x WRTD  =  OFF        ]
+"63
+[p x EBTR0  =  OFF       ]
+"64
+[p x EBTR1  =  OFF       ]
+"65
+[p x EBTR2  =  OFF       ]
+"66
+[p x EBTR3  =  OFF       ]
+"69
+[p x EBTRB  =  OFF       ]
+"10 Trrafic_Light.c
+[; ;Trrafic_Light.c: 10: led_confg_t led_green = {PORTA_INDEX, PIN0, LED_OFF};
+[v _led_green `S277 ~T0 @X0 1 e ]
+[i _led_green
+:U ..
+:U ..
+-> . `E2986 0 `uc
+-> . `E2976 0 `uc
+-> . `E3114 0 `uc
+..
+..
+]
+"11
+[; ;Trrafic_Light.c: 11: led_confg_t led_yellow = {PORTA_INDEX, PIN1, LED_OFF};
+[v _led_yellow `S277 ~T0 @X0 1 e ]
+[i _led_yellow
+:U ..
+:U ..
+-> . `E2986 0 `uc
+-> . `E2976 1 `uc
+-> . `E3114 0 `uc
+..
+..
+]
+"12
+[; ;Trrafic_Light.c: 12: led_confg_t led_red = {PORTA_INDEX, PIN2, LED_OFF};
+[v _led_red `S277 ~T0 @X0 1 e ]
+[i _led_red
+:U ..
+:U ..
+-> . `E2986 0 `uc
+-> . `E2976 2 `uc
+-> . `E3114 0 `uc
+..
+..
+]
+"14
+[; ;Trrafic_Light.c: 14: segment_confg_t segment_1 =
+[v _segment_1 `S276 ~T0 @X0 1 e ]
+[i _segment_1
+:U ..
+:U ..
+:U ..
+:U ..
+-> . `E2986 2 `uc
+-> . `E2976 0 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 2 `uc
+-> . `E2976 1 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 2 `uc
+-> . `E2976 2 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 2 `uc
+-> . `E2976 3 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+..
+. `E3101 0
+..
+..
+]
+"35
+[; ;Trrafic_Light.c: 35: Pin_Config_t segment_enable_1 =
+[v _segment_enable_1 `S273 ~T0 @X0 1 e ]
+[i _segment_enable_1
+:U ..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 0 `uc
+-> . `E2972 0 `uc
+-> . `E2968 1 `uc
+..
+..
+]
+"43
+[; ;Trrafic_Light.c: 43: Pin_Config_t segment_enable_2 =
+[v _segment_enable_2 `S273 ~T0 @X0 1 e ]
+[i _segment_enable_2
+:U ..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 1 `uc
+-> . `E2972 0 `uc
+-> . `E2968 1 `uc
+..
+..
+]
+"51
+[; ;Trrafic_Light.c: 51: lcd_confg_4_t lcd_4bit = {
+[v _lcd_4bit `S275 ~T0 @X0 1 e ]
+[i _lcd_4bit
+:U ..
+:U ..
+:U ..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 2 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+..
+:U ..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 4 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 5 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 6 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 7 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+..
+:U ..
+:U ..
+-> . `E2986 3 `uc
+-> . `E2976 3 `uc
+-> . `E2972 0 `uc
+-> . `E2968 0 `uc
+..
+..
+..
+..
+]
+"78
+[; ;Trrafic_Light.c: 78: uint8 x = 0;
+[v _x `uc ~T0 @X0 1 e ]
+[i _x
+-> -> 0 `i `uc
+]
+"79
+[; ;Trrafic_Light.c: 79: uint8 t_delay = 0;
+[v _t_delay `uc ~T0 @X0 1 e ]
+[i _t_delay
+-> -> 0 `i `uc
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"80
+[; ;Trrafic_Light.c: 80: int main() {
+[v _main `(i ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"81
+[; ;Trrafic_Light.c: 81:     Std_ReturnType ret = (Std_ReturnType)0x00;
+[v _ret `uc ~T0 @X0 1 a ]
+[e = _ret -> -> 0 `i `uc ]
+"82
+[; ;Trrafic_Light.c: 82:     application_initialize();
+[e ( _application_initialize ..  ]
+"83
+[; ;Trrafic_Light.c: 83:      while(1){
+[e :U 280 ]
+{
+"84
+[; ;Trrafic_Light.c: 84:          uint8 R = 30;
+[v _R `uc ~T0 @X0 1 a ]
+[e = _R -> -> 30 `i `uc ]
+"85
+[; ;Trrafic_Light.c: 85:          uint8 G = 30;
+[v _G `uc ~T0 @X0 1 a ]
+[e = _G -> -> 30 `i `uc ]
+"86
+[; ;Trrafic_Light.c: 86:          uint8 Y = 5;
+[v _Y `uc ~T0 @X0 1 a ]
+[e = _Y -> -> 5 `i `uc ]
+"87
+[; ;Trrafic_Light.c: 87:         if(0 == x)
+[e $ ! == -> 0 `i -> _x `i 282  ]
+"88
+[; ;Trrafic_Light.c: 88:         {
+{
+"89
+[; ;Trrafic_Light.c: 89:            for(signed char i = R; i>=0; i--){
+{
+[v _i `c ~T0 @X0 1 a ]
+[e = _i -> _R `c ]
+[e $ >= -> _i `i -> 0 `i 283  ]
+[e $U 284  ]
+[e :U 283 ]
+{
+"90
+[; ;Trrafic_Light.c: 90:                 Led_Turn_Off(&led_green);
+[e ( _Led_Turn_Off (1 -> &U _led_green `*CS277 ]
+"91
+[; ;Trrafic_Light.c: 91:                 Led_Turn_On(&led_red);
+[e ( _Led_Turn_On (1 -> &U _led_red `*CS277 ]
+"92
+[; ;Trrafic_Light.c: 92:                 send_4_bit_string_data_pos(&lcd_4bit,2,8,"STOP");
+[e ( _send_4_bit_string_data_pos (4 , , , -> &U _lcd_4bit `*CS275 -> -> 2 `i `uc -> -> 8 `i `uc :s 1C ]
+"93
+[; ;Trrafic_Light.c: 93:                 for(t_delay = 0; t_delay <= 50; t_delay++)
+{
+[e = _t_delay -> -> 0 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 286  ]
+[e $U 287  ]
+[e :U 286 ]
+"94
+[; ;Trrafic_Light.c: 94:                    {
+{
+"95
+[; ;Trrafic_Light.c: 95:                        segment_write_number(&segment_1,(R % 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> % -> _R `i -> 10 `i `uc ]
+"96
+[; ;Trrafic_Light.c: 96:                        gpio_pin_write_logic(&segment_enable_2,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 0 ]
+"97
+[; ;Trrafic_Light.c: 97:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"98
+[; ;Trrafic_Light.c: 98:                        gpio_pin_write_logic(&segment_enable_2,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 1 ]
+"100
+[; ;Trrafic_Light.c: 100:                        segment_write_number(&segment_1,(R / 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> / -> _R `i -> 10 `i `uc ]
+"101
+[; ;Trrafic_Light.c: 101:                        gpio_pin_write_logic(&segment_enable_1,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 0 ]
+"102
+[; ;Trrafic_Light.c: 102:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"103
+[; ;Trrafic_Light.c: 103:                        gpio_pin_write_logic(&segment_enable_1,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 1 ]
+"104
+[; ;Trrafic_Light.c: 104:                     }
+}
+[e ++ _t_delay -> -> 1 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 286  ]
+[e :U 287 ]
+}
+"105
+[; ;Trrafic_Light.c: 105:                 R--;
+[e -- _R -> -> 1 `i `uc ]
+"106
+[; ;Trrafic_Light.c: 106:          }
+}
+[e -- _i -> -> 1 `i `c ]
+[e $ >= -> _i `i -> 0 `i 283  ]
+[e :U 284 ]
+}
+"107
+[; ;Trrafic_Light.c: 107:             x = 1;
+[e = _x -> -> 1 `i `uc ]
+"108
+[; ;Trrafic_Light.c: 108:         }
+}
+[e $U 289  ]
+"109
+[; ;Trrafic_Light.c: 109:         else if(1 == x)
+[e :U 282 ]
+[e $ ! == -> 1 `i -> _x `i 290  ]
+"110
+[; ;Trrafic_Light.c: 110:         {
+{
+"111
+[; ;Trrafic_Light.c: 111:            for(signed char i = Y; i>=0; i--){
+{
+[v _i `c ~T0 @X0 1 a ]
+[e = _i -> _Y `c ]
+[e $ >= -> _i `i -> 0 `i 291  ]
+[e $U 292  ]
+[e :U 291 ]
+{
+"112
+[; ;Trrafic_Light.c: 112:                 Led_Turn_Off(&led_red);
+[e ( _Led_Turn_Off (1 -> &U _led_red `*CS277 ]
+"113
+[; ;Trrafic_Light.c: 113:                 Led_Turn_On(&led_yellow);
+[e ( _Led_Turn_On (1 -> &U _led_yellow `*CS277 ]
+"114
+[; ;Trrafic_Light.c: 114:                 send_4_bit_string_data_pos(&lcd_4bit,2,8,"READY!!");
+[e ( _send_4_bit_string_data_pos (4 , , , -> &U _lcd_4bit `*CS275 -> -> 2 `i `uc -> -> 8 `i `uc :s 2C ]
+"115
+[; ;Trrafic_Light.c: 115:                 for(t_delay = 0; t_delay <= 50; t_delay++)
+{
+[e = _t_delay -> -> 0 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 294  ]
+[e $U 295  ]
+[e :U 294 ]
+"116
+[; ;Trrafic_Light.c: 116:                    {
+{
+"117
+[; ;Trrafic_Light.c: 117:                        segment_write_number(&segment_1,(Y % 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> % -> _Y `i -> 10 `i `uc ]
+"118
+[; ;Trrafic_Light.c: 118:                        gpio_pin_write_logic(&segment_enable_2,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 0 ]
+"119
+[; ;Trrafic_Light.c: 119:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"120
+[; ;Trrafic_Light.c: 120:                        gpio_pin_write_logic(&segment_enable_2,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 1 ]
+"122
+[; ;Trrafic_Light.c: 122:                        segment_write_number(&segment_1,(Y / 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> / -> _Y `i -> 10 `i `uc ]
+"123
+[; ;Trrafic_Light.c: 123:                        gpio_pin_write_logic(&segment_enable_1,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 0 ]
+"124
+[; ;Trrafic_Light.c: 124:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"125
+[; ;Trrafic_Light.c: 125:                        gpio_pin_write_logic(&segment_enable_1,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 1 ]
+"126
+[; ;Trrafic_Light.c: 126:                    }
+}
+[e ++ _t_delay -> -> 1 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 294  ]
+[e :U 295 ]
+}
+"127
+[; ;Trrafic_Light.c: 127:                 Y--;
+[e -- _Y -> -> 1 `i `uc ]
+"128
+[; ;Trrafic_Light.c: 128:          }
+}
+[e -- _i -> -> 1 `i `c ]
+[e $ >= -> _i `i -> 0 `i 291  ]
+[e :U 292 ]
+}
+"129
+[; ;Trrafic_Light.c: 129:            x = 2;
+[e = _x -> -> 2 `i `uc ]
+"130
+[; ;Trrafic_Light.c: 130:         }
+}
+[e $U 297  ]
+"131
+[; ;Trrafic_Light.c: 131:         else if(2 == x)
+[e :U 290 ]
+[e $ ! == -> 2 `i -> _x `i 298  ]
+"132
+[; ;Trrafic_Light.c: 132:         {
+{
+"133
+[; ;Trrafic_Light.c: 133:            for(signed char i = G; i>=0; i--){
+{
+[v _i `c ~T0 @X0 1 a ]
+[e = _i -> _G `c ]
+[e $ >= -> _i `i -> 0 `i 299  ]
+[e $U 300  ]
+[e :U 299 ]
+{
+"134
+[; ;Trrafic_Light.c: 134:                 Led_Turn_Off(&led_yellow);
+[e ( _Led_Turn_Off (1 -> &U _led_yellow `*CS277 ]
+"135
+[; ;Trrafic_Light.c: 135:                 Led_Turn_On(&led_green);
+[e ( _Led_Turn_On (1 -> &U _led_green `*CS277 ]
+"136
+[; ;Trrafic_Light.c: 136:                 send_4_bit_string_data_pos(&lcd_4bit,2,8," GO    ");
+[e ( _send_4_bit_string_data_pos (4 , , , -> &U _lcd_4bit `*CS275 -> -> 2 `i `uc -> -> 8 `i `uc :s 3C ]
+"137
+[; ;Trrafic_Light.c: 137:                 for(t_delay = 0; t_delay <= 50; t_delay++)
+{
+[e = _t_delay -> -> 0 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 302  ]
+[e $U 303  ]
+[e :U 302 ]
+"138
+[; ;Trrafic_Light.c: 138:                    {
+{
+"139
+[; ;Trrafic_Light.c: 139:                        segment_write_number(&segment_1,(G % 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> % -> _G `i -> 10 `i `uc ]
+"140
+[; ;Trrafic_Light.c: 140:                        gpio_pin_write_logic(&segment_enable_2,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 0 ]
+"141
+[; ;Trrafic_Light.c: 141:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"142
+[; ;Trrafic_Light.c: 142:                        gpio_pin_write_logic(&segment_enable_2,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_2 `*CS273 . `E2968 1 ]
+"144
+[; ;Trrafic_Light.c: 144:                        segment_write_number(&segment_1,(G / 10));
+[e ( _segment_write_number (2 , -> &U _segment_1 `*CS276 -> / -> _G `i -> 10 `i `uc ]
+"145
+[; ;Trrafic_Light.c: 145:                        gpio_pin_write_logic(&segment_enable_1,LOW);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 0 ]
+"146
+[; ;Trrafic_Light.c: 146:                        _delay((unsigned long)((10)*(4000000UL/4000.0)));
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 4000000 `ul `d .4000.0 `ul ]
+"147
+[; ;Trrafic_Light.c: 147:                        gpio_pin_write_logic(&segment_enable_1,HIGH);
+[e ( _gpio_pin_write_logic (2 , -> &U _segment_enable_1 `*CS273 . `E2968 1 ]
+"148
+[; ;Trrafic_Light.c: 148:                     }
+}
+[e ++ _t_delay -> -> 1 `i `uc ]
+[e $ <= -> _t_delay `i -> 50 `i 302  ]
+[e :U 303 ]
+}
+"149
+[; ;Trrafic_Light.c: 149:                 G--;
+[e -- _G -> -> 1 `i `uc ]
+"150
+[; ;Trrafic_Light.c: 150:          }
+}
+[e -- _i -> -> 1 `i `c ]
+[e $ >= -> _i `i -> 0 `i 299  ]
+[e :U 300 ]
+}
+"151
+[; ;Trrafic_Light.c: 151:             x = 0;
+[e = _x -> -> 0 `i `uc ]
+"152
+[; ;Trrafic_Light.c: 152:         }
+}
+[e $U 305  ]
+"153
+[; ;Trrafic_Light.c: 153:         else{}
+[e :U 298 ]
+{
+}
+[e :U 305 ]
+[e :U 297 ]
+[e :U 289 ]
+"154
+[; ;Trrafic_Light.c: 154:      }
+}
+[e :U 279 ]
+[e $U 280  ]
+[e :U 281 ]
+"155
+[; ;Trrafic_Light.c: 155:       return (0);
+[e ) -> 0 `i ]
+[e $UE 278  ]
+"156
+[; ;Trrafic_Light.c: 156: }
+[e :UE 278 ]
+}
+"159
+[; ;Trrafic_Light.c: 159: void application_initialize(void){
+[v _application_initialize `(v ~T0 @X0 1 ef ]
+{
+[e :U _application_initialize ]
+[f ]
+"161
+[; ;Trrafic_Light.c: 161:     lcd_pins_4_initialize(&lcd_4bit);
+[e ( _lcd_pins_4_initialize (1 -> &U _lcd_4bit `*CS275 ]
+"162
+[; ;Trrafic_Light.c: 162:     segment_pin_initialize(&segment_1);
+[e ( _segment_pin_initialize (1 -> &U _segment_1 `*CS276 ]
+"163
+[; ;Trrafic_Light.c: 163:     Led_initialize(&led_green);
+[e ( _Led_initialize (1 -> &U _led_green `*CS277 ]
+"164
+[; ;Trrafic_Light.c: 164:     Led_initialize(&led_yellow);
+[e ( _Led_initialize (1 -> &U _led_yellow `*CS277 ]
+"165
+[; ;Trrafic_Light.c: 165:     Led_initialize(&led_red);
+[e ( _Led_initialize (1 -> &U _led_red `*CS277 ]
+"166
+[; ;Trrafic_Light.c: 166:     gpio_pin_direction_intialize(&segment_enable_1);
+[e ( _gpio_pin_direction_intialize (1 -> &U _segment_enable_1 `*CS273 ]
+"167
+[; ;Trrafic_Light.c: 167:     gpio_pin_direction_intialize(&segment_enable_2);
+[e ( _gpio_pin_direction_intialize (1 -> &U _segment_enable_2 `*CS273 ]
+"168
+[; ;Trrafic_Light.c: 168: }
+[e :UE 306 ]
+}
+[a 1C 83 84 79 80 0 ]
+[a 2C 82 69 65 68 89 33 33 0 ]
+[a 3C 32 71 79 32 32 32 32 0 ]
